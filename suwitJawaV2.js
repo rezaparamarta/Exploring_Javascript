@@ -18,4 +18,38 @@ playerGajah.addEventListener('click', function() {
     const pilihanPlayer = playerGajah.className;
     const hasil = getHasil(pilihanComputer, pilihanPlayer);
 
+    const imgComputer = document.querySelector('.img-komputer');
+    imgComputer.setAttribute('src', `img/${pilihanComputer}.png`);
+
+    const info = document.querySelector('.info');
+    info.innerHTML = hasil;
+
+});
+
+const playerOrang = document.querySelector('.orang');
+playerOrang.addEventListener('click', function() {
+    const pilihanComputer = getpilihanComputer();
+    const pilihanPlayer = playerOrang.className;
+    const hasil = getHasil(pilihanComputer, pilihanPlayer);
+
+    const imgComputer = document.querySelector('.img-komputer');
+    imgComputer.setAttribute('src', `img/${pilihanComputer}.png`);
+
+    const info = document.querySelector('.info');
+    info.innerHTML = hasil;
+
+});
+
+const playerSemut = document.querySelector('.semut');
+playerSemut.addEventListener('click', function() {
+    const pilihanComputer = getpilihanComputer();
+    const pilihanPlayer = playerSemut.className;
+    const hasil = getHasil(pilihanComputer, pilihanPlayer);
+
+    const imgComputer = document.querySelector('.img-komputer');
+    imgComputer.setAttribute('src', `img/${pilihanComputer}.png`);
+
+    const info = document.querySelector('.info');
+    info.innerHTML = hasil;
+
 });
