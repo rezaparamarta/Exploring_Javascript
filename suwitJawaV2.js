@@ -12,44 +12,78 @@ function getHasil(comp, player) {
     if (player == 'semut') return ( comp == 'orang' ) ? 'KALAH!' : 'MENANG!';
 }
 
-const playerGajah = document.querySelector('.gajah');
-playerGajah.addEventListener('click', function() {
-    const pilihanComputer = getpilihanComputer();
-    const pilihanPlayer = playerGajah.className;
-    const hasil = getHasil(pilihanComputer, pilihanPlayer);
+// const playerGajah = document.querySelector('.gajah');
+// playerGajah.addEventListener('click', function() {
+//     const pilihanComputer = getpilihanComputer();
+//     const pilihanPlayer = playerGajah.className;
+//     const hasil = getHasil(pilihanComputer, pilihanPlayer);
 
+//     const imgComputer = document.querySelector('.img-komputer');
+//     imgComputer.setAttribute('src', `img/${pilihanComputer}.png`);
+
+//     const info = document.querySelector('.info');
+//     info.innerHTML = hasil;
+
+// });
+
+// const playerOrang = document.querySelector('.orang');
+// playerOrang.addEventListener('click', function() {
+//     const pilihanComputer = getpilihanComputer();
+//     const pilihanPlayer = playerOrang.className;
+//     const hasil = getHasil(pilihanComputer, pilihanPlayer);
+
+//     const imgComputer = document.querySelector('.img-komputer');
+//     imgComputer.setAttribute('src', `img/${pilihanComputer}.png`);
+
+//     const info = document.querySelector('.info');
+//     info.innerHTML = hasil;
+
+// });
+
+// const playerSemut = document.querySelector('.semut');
+// playerSemut.addEventListener('click', function() {
+//     const pilihanComputer = getpilihanComputer();
+//     const pilihanPlayer = playerSemut.className;
+//     const hasil = getHasil(pilihanComputer, pilihanPlayer);
+
+//     const imgComputer = document.querySelector('.img-komputer');
+//     imgComputer.setAttribute('src', `img/${pilihanComputer}.png`);
+
+//     const info = document.querySelector('.info');
+//     info.innerHTML = hasil;
+
+// });
+
+function putar() {
     const imgComputer = document.querySelector('.img-komputer');
-    imgComputer.setAttribute('src', `img/${pilihanComputer}.png`);
+    const gambar = ['gajah', 'orang', 'semut'];
+    let i = 0;
+    const waktuMulai = new Date().getTime();
+    setInterval(function() {
+        if ( new Date().getTime() - waktuMulai > 1000 ) {{
+            clearInterval;
+            return;
+        }}
+        imgComputer.setAttribute('src', `img/${gambar[i++]}.png`);
+        if ( i == gambar.length ) i = 0;
+    }, 100);
+}
 
-    const info = document.querySelector('.info');
-    info.innerHTML = hasil;
+const pilihan = document.querySelectorAll('li img');
+pilihan.forEach(function(pil) {
+    pil.addEventListener('click', function() {
+        const pilihanComputer = getpilihanComputer();
+        const pilihanPlayer = pil.className;
+        const hasil = getHasil(pilihanComputer, pilihanPlayer);
 
-});
+        putar();
 
-const playerOrang = document.querySelector('.orang');
-playerOrang.addEventListener('click', function() {
-    const pilihanComputer = getpilihanComputer();
-    const pilihanPlayer = playerOrang.className;
-    const hasil = getHasil(pilihanComputer, pilihanPlayer);
+        setTimeout(function() {
+            const imgComputer = document.querySelector('.img-komputer');
+            imgComputer.setAttribute('src', `img/${pilihanComputer}.png`);
 
-    const imgComputer = document.querySelector('.img-komputer');
-    imgComputer.setAttribute('src', `img/${pilihanComputer}.png`);
-
-    const info = document.querySelector('.info');
-    info.innerHTML = hasil;
-
-});
-
-const playerSemut = document.querySelector('.semut');
-playerSemut.addEventListener('click', function() {
-    const pilihanComputer = getpilihanComputer();
-    const pilihanPlayer = playerSemut.className;
-    const hasil = getHasil(pilihanComputer, pilihanPlayer);
-
-    const imgComputer = document.querySelector('.img-komputer');
-    imgComputer.setAttribute('src', `img/${pilihanComputer}.png`);
-
-    const info = document.querySelector('.info');
-    info.innerHTML = hasil;
-
+            const info = document.querySelector('.info');
+            info.innerHTML = hasil;
+        }, 1000);
+    });
 });
