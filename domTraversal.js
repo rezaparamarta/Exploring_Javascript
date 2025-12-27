@@ -16,8 +16,31 @@ const close = document.querySelectorAll('.close');
 close.forEach(function(element) {
     element.addEventListener('click', function(event) {
         event.target.parentElement.style.display = 'none';
+        // DOM prevent Default
+        //event.preventDefault();
+        event.preventDefault();
+        event.stopPropagation();
     });
 });
 
-const nama = document.querySelector('.nama');
-console.log(nama.parentElement.parentElement);
+// const nama = document.querySelector('.nama');
+// console.log(nama.parentElement.nextElementSibling);
+
+// Event bubbling
+const cards = document.querySelectorAll('.card');
+cards.forEach(function(card) {
+    card.addEventListener('click', function() {
+        alert('ok');
+    });
+});
+
+
+const container = document.querySelector('.container');
+container.addEventListener('click', function(e) {
+    if(e.target.className == 'close') {
+        e.target.parentElement.style.display = 'none';
+        e.preventDefault();
+    };
+});
+
+
